@@ -6,4 +6,6 @@ dropWc.js drops the whole wc database. viewTeams.js finds all the teams inside t
 
 Dependencies
 ===========
-mongoose and mongodb
+node
+mongoose
+mongodb

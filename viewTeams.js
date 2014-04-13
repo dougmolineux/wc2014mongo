@@ -1,5 +1,6 @@
 // include mongoose
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    groups = ['A','B','C','D','E','F','G','H'];
 
 // connect to wc mongodb
 mongoose.connect('mongodb://localhost/wc');
@@ -9,13 +10,17 @@ var teamSchema = new mongoose.Schema({
 	name: String,
 	continent: String,
 	group: String,
-	ranking: Number,
+	ranking: Number
 });
 
 // create the model from the schema
 var Team = mongoose.model('Team', teamSchema);
 
-Team.find({}, function(err, db_users) {
-	console.dir(db_users);
-	process.exit();
-});
+for(var i = 0; i < groups.length; i++) {
+	Team.find({ group : groups[i]}, function(err, teams) {
+		for(var j = 0; j < teams.length; j++) {
+			console.dir(teams[j].name);
+		}
+	});
+}
+
