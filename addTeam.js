@@ -1,5 +1,6 @@
 // include mongoose
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+	teams = [];
 
 // connect to wc mongodb
 mongoose.connect('mongodb://localhost/wc');
@@ -15,16 +16,29 @@ var teamSchema = new mongoose.Schema({
 // create the model from the schema
 var Team = mongoose.model('Team', teamSchema);
 
-// make a new team, called england
-var england = new Team({
-	name: "England",
-	continent: "Europe",
-	group: "D",
-	ranking: 11
-});
+// Make Group D teams
+var england = makeTeam("England", "Europe", "D", 11);
+var uruguay = makeTeam("Uruguay", "South America", "D", 5);
+var italy = makeTeam("Italy", "Europe", "D", 9);
+var costa = makeTeam("Costa Rica", "North America", "D", 34);
 
-england.save(function() {
-	console.dir(england);
-	console.log("Team Saved");
-	process.exit();
-});
+// add each team to the teams array
+teams.push(england);
+teams.push(uruguay);
+teams.push(italy);
+teams.push(costa);
+
+for(var i = 0; i < teams.length; i++) {
+	teams[i].save(function() {
+		console.log(teams[i].name + " saved in wc.");
+	});
+}
+
+function makeTeam(name, cont, group, rank) {
+	return new Team({
+		name: name,
+		continent: cont,
+		group: group,
+		ranking: rank
+	});
+}
