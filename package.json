@@ -1,0 +1,21 @@
+{
+  "name": "wc2014mongo",
+  "version": "0.0.0",
+  "description": "wc2014mongo =========== Originally intended to learn how mongoose and mongodb work. Consists of 3 scripts. addTeam.js adds a team to the wc db, \"teams\" collection.  dropWc.js drops the whole wc database. viewTeams.js finds all the teams inside the teams collection",
+  "main": "addTeams.js",
+  "dependencies": {
+    "mongoose": "~3.8.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "b "
+  },
+  "author": "",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "b7c618f2d5859f566f326a54b69fd0d07e4035b3"
+}
