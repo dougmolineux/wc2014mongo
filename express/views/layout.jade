@@ -1,5 +1,12 @@
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body!= body
+doctype html
+html(ng-app="wc2013mongoMod")
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body
+		h1= title
+		p Welcome to #{title}
+		div(ng-controller="AngularJSCtrl")
+			p Angular JS Controller
+		script(src='js/angular/angular.js')
+		script(src='js/main.js')
