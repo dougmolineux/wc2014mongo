@@ -1,8 +1,6 @@
-
 /**
  * Module dependencies.
  */
-
 var express = require('express'),
     routes = require('./routes'),
     mongoose = require('../node_modules/mongoose');
@@ -34,7 +32,7 @@ app.configure(function(){
 });
 
 app.configure('development', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+	app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
 app.configure('production', function(){
@@ -44,7 +42,13 @@ app.configure('production', function(){
 // Routes
 app.get('/', routes.index);
 app.get('/api', function (req, res) {
-	res.send('WC2014 API is running');
+	//res.send('WC2014 API is running');
+	Team.find({}, function(err, teams) {
+		//for(var j = 0; j < teams.length; j++) {
+		//	console.dir(teams[j].name);
+		//}
+		res.json(teams);
+	});
 });
 
 app.listen(3000, function(){

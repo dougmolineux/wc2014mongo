@@ -9,4 +9,6 @@ html(ng-app="wc2014mongoMod")
 		h1= title
 		p Welcome to #{title}
 		div(ng-controller="teamCtrl")
-			p Angular JS Controller
+			p {{teams}} 
+			ul(ng-repeat='team in teams')
+				li Name - {{team.name}} Continent - {{team.continent}}
