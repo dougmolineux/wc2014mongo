@@ -1,6 +1,7 @@
 console.log("loaded main.js");
 
 var myApp = angular.module('wc2014mongoMod',[]);
+//var myApp = angular.module('wc2014mongoMod');
 
 myApp.service('teamService', function($http) {
 	//delete $http.defaults.headers.common['X-Requested-With'];
