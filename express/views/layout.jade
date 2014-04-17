@@ -9,6 +9,8 @@ html(ng-app="wc2014mongoMod")
 		h1= title
 		p Welcome to #{title}
 		div(ng-controller="teamCtrl")
+			button(ng-click="getTeams()") Get Teams
+			button(ng-click="addTeam()") Add Team
 			p {{teams}} 
 			ul(ng-repeat='team in teams')
 				li Name - {{team.name}} Continent - {{team.continent}}

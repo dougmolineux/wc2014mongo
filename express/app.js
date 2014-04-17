@@ -23,12 +23,18 @@ var Team = mongoose.model('Team', teamSchema);
 
 // Configuration
 app.configure(function(){
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
+	app.set('views', __dirname + '/views');
+	app.set('view engine', 'jade');
+	
+	// apparently its bad to use bodyParser
+	// but when replaced with express.json()
+	// an error pops up saying there isn't a method
+	// called json. Might be a newer version is needed
+	app.use(express.bodyParser());
+
+	app.use(express.methodOverride());
+	app.use(app.router);
+	app.use(express.static(__dirname + '/public'));
 });
 
 app.configure('development', function(){
@@ -41,14 +47,14 @@ app.configure('production', function(){
 
 // Routes
 app.get('/', routes.index);
-app.get('/api', function (req, res) {
-	//res.send('WC2014 API is running');
+app.get('/getTeams', function (req, res) {
 	Team.find({}, function(err, teams) {
-		//for(var j = 0; j < teams.length; j++) {
-		//	console.dir(teams[j].name);
-		//}
 		res.json(teams);
 	});
+});
+app.post('addTeam', function(req, res) {
+	console.dir(req);
+	console.dir(res);
 });
 
 app.listen(3000, function(){

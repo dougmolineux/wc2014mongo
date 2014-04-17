@@ -1,21 +1,35 @@
 var myApp = angular.module('wc2014mongoMod',[]);
 
 myApp.service('teamService', function($http) {
-	this.getData = function(callbackFunc) {
+	this.getTeams = function(callbackFunc) {
 		$http({
 			method: 'GET',
-			url: '/api'
+			url: '/getTeams'
 		}).success(function(data){
 			callbackFunc(data);
-			//console.log(data);
 		}).error(function(){
         		alert("error");
     		});
-	}
+	};
+	this.addTeam = function(callbackFunc) {
+                $http({
+                        method: 'POST',
+                        url: '/addTeams'
+                }).success(function(data){
+                        callbackFunc(data);
+                }).error(function(){
+                        alert("error");
+                });
+        }
 });
 
 myApp.controller('teamCtrl', function($scope, teamService) {
-	teamService.getData(function(dataResponse) {
-		$scope.teams = dataResponse;
-	});
+	$scope.getTeams = function() { 
+		teamService.getTeams(function(dataResponse) {
+			$scope.teams = dataResponse;
+		});
+	};
+	$scope.addTeam = function() {
+		// add a team, make a post to /addTeam
+	};
 });
