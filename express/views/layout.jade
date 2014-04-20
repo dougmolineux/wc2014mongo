@@ -5,12 +5,13 @@ html(ng-app="wc2014mongoMod")
 		link(rel='stylesheet', href='/stylesheets/style.css')
 		script(src='js/angular/angular.js')
 		script(src='js/main.js')
+		script(src='js/angular-route/angular-route.js')
 	body
 		h1= title
 		p Welcome to #{title}
 		div(ng-controller="teamCtrl")
 			button(ng-click="getTeams()") Get Teams
-			button(ng-click="addTeam()") Add Team
+			button(ng-click="go('/addTeam'") Add Team
 			p {{teams}} 
 			ul(ng-repeat='team in teams')
 				li Name - {{team.name}} Continent - {{team.continent}}

@@ -52,6 +52,12 @@ app.get('/getTeams', function (req, res) {
 		res.json(teams);
 	});
 });
+app.get('addTeam', function(req, res) {
+        console.dir(req);
+        console.dir(res);
+});
+
+// posts
 app.post('addTeam', function(req, res) {
 	console.dir(req);
 	console.dir(res);

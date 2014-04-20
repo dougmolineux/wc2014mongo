@@ -1,4 +1,4 @@
-var myApp = angular.module('wc2014mongoMod',[]);
+var myApp = angular.module('wc2014mongoMod',['ngRoute']);
 
 myApp.service('teamService', function($http) {
 	this.getTeams = function(callbackFunc) {
@@ -33,3 +33,10 @@ myApp.controller('teamCtrl', function($scope, teamService) {
 		// add a team, make a post to /addTeam
 	};
 });
+
+myApp.config(['$routeProvider', function($routeProvider) {
+	$routeProvider.when('/addTeam', {
+		templateUrl: 'views/match.html',
+		controller: 'teamCtrl'	
+	});
+}]);
